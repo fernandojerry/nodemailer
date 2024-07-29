@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const app = express();
 
 app.use(helmet({
-    crossOriginEmbedderPolicy: process.env.NODE_ENV !== 'production'
+    crossOriginEmbedderPolicy: process.env.NODE_ENV === 'production'
 }));
 
 const whitelist = process.env.FRONTEND_APP_URLS.split(',');
