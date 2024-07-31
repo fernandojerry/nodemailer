@@ -18,6 +18,14 @@ const sendEmail = async ({ receipients, subject, message }) => {
         subject,
         text: message,
         html: message,
+        headers: {
+            'Reply-To': 'support@hillviewhousing.com',
+            'List-Unsubscribe': '<mailto:unsubscribe@hillviewhousing.com>',
+            'X-Mailer': 'Nodemailer',
+            'X-Priority': '3',  // 1 (High), 3 (Normal), 5 (Low)
+            'X-MSMail-Priority': 'Normal',
+            'Importance': 'Normal'
+        }
     });
 };
 
