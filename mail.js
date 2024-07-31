@@ -13,13 +13,13 @@ const transport = nodemailer.createTransport({
 
 const sendEmail = async ({ receipients, subject, message }) => {
     return await transport.sendMail({
-        from: `"Hillview" <support@hillviewhousing.com>`,
+        from: `"Hillview" <admin@hillviewhousing.com>`,
         to: receipients,
         subject,
         text: message,
         html: message,
         headers: {
-            'Reply-To': 'support@hillviewhousing.com',
+            'Reply-To': 'admin@hillviewhousing.com',
             'List-Unsubscribe': '<mailto:unsubscribe@hillviewhousing.com>',
             'X-Mailer': 'Nodemailer',
             'X-Priority': '3',  // 1 (High), 3 (Normal), 5 (Low)
