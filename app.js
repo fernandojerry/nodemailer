@@ -35,7 +35,7 @@ app.post('/send-email', (req, res) => {
 
     // Basic validation
     if (!email || !subject || !htmlContent || plainText) {
-        return res.status(400).json({'Email, subject, and message are required' });
+        return res.status(400).json({plainText: 'Email, subject, and message are required' });
     }
 
     const receipients = `<${email}>`;
@@ -43,7 +43,7 @@ app.post('/send-email', (req, res) => {
     sendEmail({ receipients, subject, htmlContent, plainText })
         .then(result => {
             console.log('Email sent:', result);
-            res.status(200).json({ 'Email sent successfully' });
+            res.status(200).json({plainText: 'Email sent successfully' });
         })
         .catch(error => {
             console.error('Error sending email:', error);
