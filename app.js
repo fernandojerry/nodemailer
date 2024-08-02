@@ -31,23 +31,23 @@ app.get('/', (_, res) => {
 });
 
 app.post('/send-email', (req, res) => {
-    const { email, subject, message } = req.body;
+    const { email, subject, htmlContent, plainText } = req.body;
 
     // Basic validation
-    if (!email || !subject || !message) {
-        return res.status(400).json({ message: 'Email, subject, and message are required' });
+    if (!email || !subject || !htmlContent || plainText) {
+        return res.status(400).json({'Email, subject, and message are required' });
     }
 
     const receipients = `<${email}>`;
 
-    sendEmail({ receipients, subject, message })
+    sendEmail({ receipients, subject, htmlContent, plainText })
         .then(result => {
             console.log('Email sent:', result);
-            res.status(200).json({ message: 'Email sent successfully' });
+            res.status(200).json({ 'Email sent successfully' });
         })
         .catch(error => {
             console.error('Error sending email:', error);
-            res.status(500).json({ message: 'Failed to send email' });
+            res.status(500).json({ plainText: 'Failed to send email' });
         });
 });
 
