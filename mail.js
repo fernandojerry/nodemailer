@@ -11,13 +11,13 @@ const transport = nodemailer.createTransport({
     },
 });
 
-const sendEmail = async ({ receipients, subject, message }) => {
+const sendEmail = async ({ receipients, subject, htmlContent, plainText }) => {
     return await transport.sendMail({
         from: `"Hillview" <admin@hillviewhousing.com>`,
         to: receipients,
         subject,
-        text: message,
-        html: message,
+        text: plainText,
+        html: htmlContent,
         headers: {
             'Reply-To': 'admin@hillviewhousing.com',
             'List-Unsubscribe': '<mailto:unsubscribe@hillviewhousing.com>',
