@@ -34,7 +34,7 @@ app.post('/send-email', (req, res) => {
     const { email, subject, htmlContent, plainText } = req.body;
 
     // Basic validation
-    if (!email || !subject || !htmlContent || plainText) {
+    if (!email || !subject || !htmlContent || !plainText) {
         return res.status(400).json({plainText: 'Email, subject, and message are required' });
     }
 
